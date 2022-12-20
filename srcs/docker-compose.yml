@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  mariadb:
+    container_name: mariadb
+    networks:
+      - my_inception
+    build: ./requirements/mariadb
+    volumes:
+      - "wordpressdb:/var/lib/mysql"
+    restart: always
+    env_file:
+      - .env
+
+  nginx:
+    container_name: nginx
+    depends_on:
+      - wordpress
+    networks:
+      - my_inception
+    build: ./requirements/nginx
+    restart: always
+    volumes:
+      - "data-test:/var/www/html"
+    ports:
+      - 8080:8080
+      - 443:443
+    env_file:
+      - .env
+
+  wordpress:
+    container_name: wordpress
+    depends_on:
+      - mariadb
+    networks:
+      - my_inception
+    build: ./requirements/wordpress
+    volumes:
+      - "data-test:/var/www/html"
+    env_file:
+      - .env
+
+networks:
+  my_inception:
+
+volumes:
+  data-test:
+  wordpressdb:
+
+# docker-compose down && docker-compose build && docker-compose up -d
