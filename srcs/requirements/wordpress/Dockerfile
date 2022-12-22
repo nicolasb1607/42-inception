@@ -6,7 +6,7 @@ RUN apt-get install php7.3 php7.3-fpm php7.3-cli php-mysql mariadb-client curl -
 
 RUN apt-get install wget -y
 
-# RUN mkdir -p /var/www/html/
+RUN mkdir -p /var/www/html/wordpress/
 # RUN cd /var/www/html/
 # RUN wget https://wordpress.org/latest.tar.gz
 # RUN tar -xvzf latest.tar.gz -C /var/www/html/
@@ -16,8 +16,8 @@ RUN apt-get install wget -y
 # COPY ./conf/wp-config.php /var/www/html/wordpress/
 # RUN chown -R www-data:www-data /var/www/html/wordpress
 
-# COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
-# RUN chown -R www-data:www-data /etc/php/7.3/fpm/pool.d/www.conf
+COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+RUN chown -R www-data:www-data /etc/php/7.3/fpm/pool.d/www.conf
 
 
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
