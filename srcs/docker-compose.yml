@@ -27,7 +27,6 @@ services:
     volumes:
       - "wordpress:/var/www/html"
     ports:
-      - 8080:8080
       - 443:443
     env_file:
       - .env
@@ -52,5 +51,3 @@ networks:
 volumes:
   db:
   wordpress:
-
-# docker-compose down && docker-compose build && docker-compose up -d

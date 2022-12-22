@@ -1,7 +1,6 @@
 FROM debian:buster
 
 EXPOSE 443
-EXPOSE 8080
 #Install Nginx and create "www" group
 RUN apt-get update
 RUN apt-get install nginx -y
