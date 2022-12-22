@@ -10,10 +10,10 @@ do
 done
 
 mysql -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;"
-mysql -e "DROP USER $DB_USER@localhost;"
+mysql -e "DROP USER $DB_USER@'%';"
 mysql -e "FLUSH PRIVILEGES;"
-mysql -e "CREATE USER $DB_USER@localhost IDENTIFIED BY '$DB_PASSWORD';"
-mysql -e "GRANT ALL PRIVILEGES ON *.* TO $DB_USER@localhost IDENTIFIED BY '$DB_PASSWORD';"
+mysql -e "CREATE USER $DB_USER@'%' IDENTIFIED BY '$DB_PASSWORD';"
+mysql -e "GRANT ALL PRIVILEGES ON *.* TO $DB_USER@'%' IDENTIFIED BY '$DB_PASSWORD';"
 mysql -e "FLUSH PRIVILEGES;"
 
 mysqladmin -uroot -pSomePass shutdown 
