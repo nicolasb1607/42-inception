@@ -1,24 +1,15 @@
 #! /bin/sh
 
-
-
-# MYSQL_ROOT_PASSWORD="secret"
-# DB_PASSWORD="inceptiontest123"
-# DB_USER="nburatd"
-# DB_NAME="wpdb"
-# DB_HOST="nburat-d.42.fr"
-
-
 sleep 10 
 
-
-wp core download --locale=nl_NL --allow-root --path='/var/www/html/wordpress/'
+wp core download --locale=en_EN --allow-root --path='/var/www/html/wordpress/'
 
 wp config create --allow-root \
 	--dbname=$DB_NAME \
 	--dbuser=$DB_USER \
 	--dbpass=$DB_PASSWORD \
-	--dbhost="mariadb" --path='/var/www/html/wordpress/'
+	--dbhost="mariadb" \
+	--path='/var/www/html/wordpress/'
 
 wp core install --url=$DB_HOST \
 				--title=Inception \
@@ -27,8 +18,6 @@ wp core install --url=$DB_HOST \
 				--admin_email=$ADMIN_MAIL \
 				--allow-root \
 				--path='/var/www/html/wordpress/'
-
-
 
 mkdir -p /run/php/php7.3
 

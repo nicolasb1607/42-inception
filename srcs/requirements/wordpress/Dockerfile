@@ -7,14 +7,6 @@ RUN apt-get install php7.3 php7.3-fpm php7.3-cli php-mysql mariadb-client curl -
 RUN apt-get install wget -y
 
 RUN mkdir -p /var/www/html/wordpress/
-# RUN cd /var/www/html/
-# RUN wget https://wordpress.org/latest.tar.gz
-# RUN tar -xvzf latest.tar.gz -C /var/www/html/
-# RUN cd /var/www/html/ && ls 
-# RUN rm -rf latest-fr_FR.tar.gz
-
-# COPY ./conf/wp-config.php /var/www/html/wordpress/
-# RUN chown -R www-data:www-data /var/www/html/wordpress
 
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 RUN chown -R www-data:www-data /etc/php/7.3/fpm/pool.d/www.conf
@@ -28,13 +20,6 @@ RUN php -v
 COPY ./conf/auto_config.sh /bin/
 RUN chmod 777 /bin/auto_config.sh
 
-# COPY ./conf/init.sh /bin/init.sh
-# RUN chmod 777 /bin/init.sh
-
-
 EXPOSE 9000
 
 ENTRYPOINT [ "sh", "/bin/auto_config.sh" ]
-
-# ENTRYPOINT [ "sh", "/bin/init.sh" ]
- 
