@@ -11,10 +11,13 @@ up :
 	docker compose -f ${PATH_TO_COMPOSE} up -d
 
 logs :
-	docker compose -f ${PATH_TO_COMPOSE} logs -f
+	docker compose -f ${PATH_TO_COMPOSE} logs
 
 down :
 	docker compose -f ${PATH_TO_COMPOSE} down
 
+
 fclean :
 	sudo sh ./srcs/clear_all.sh
+
+make re : down fclean all 

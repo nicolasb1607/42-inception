@@ -1,6 +1,6 @@
 #! /bin/sh
 
-sleep 10 
+sleep 10
 
 wp core download --locale=fr_FR --allow-root --path='/var/www/html/wordpress/'
 
@@ -18,6 +18,11 @@ wp core install --url=$DB_HOST \
 				--admin_email=$ADMIN_MAIL \
 				--allow-root \
 				--path='/var/www/html/wordpress/'
+
+cd /var/www/html/wordpress/ && wp theme activate twentytwentytwo --allow-root
+
+wp user create $DB_USER  $DB_USER_EMAIL --role=contributor --allow-root
+wp user update $DB_USER --user_pass=$DB_USER_PASSWORD --allow-root
 
 mkdir -p /run/php/php7.3
 

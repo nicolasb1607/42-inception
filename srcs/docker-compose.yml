@@ -42,6 +42,8 @@ services:
     build: ./requirements/wordpress
     volumes:
       - "wordpress:/var/www/html"
+    environment:
+      - WAIT_HOST=mariadb:3306
     env_file:
       - .env
 
