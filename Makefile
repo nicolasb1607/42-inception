@@ -1,6 +1,7 @@
 PATH_TO_COMPOSE=./srcs/docker-compose.yml
 
 all :
+	sudo mkdir -p /home/nburat-d/data
 	docker-compose -f ${PATH_TO_COMPOSE} build
 	docker-compose -f ${PATH_TO_COMPOSE} up -d
 

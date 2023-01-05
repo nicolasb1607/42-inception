@@ -52,4 +52,14 @@ networks:
 
 volumes:
   db:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/nburat-d/data'
   wordpress:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/nburat-d/data'
