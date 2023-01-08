@@ -20,6 +20,4 @@ RUN php -v
 COPY ./conf/auto_config.sh /bin/
 RUN chmod 777 /bin/auto_config.sh
 
-EXPOSE 9000
-
 ENTRYPOINT [ "sh", "/bin/auto_config.sh" ]

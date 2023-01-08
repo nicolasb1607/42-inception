@@ -14,9 +14,6 @@ RUN chmod 644 /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY ./conf/init.sh /var/bin/
 RUN chmod 644 /var/bin/init.sh
 
-EXPOSE 3306
-
-
 ENTRYPOINT [ "sh", "/var/bin/init.sh" ]
 
 
